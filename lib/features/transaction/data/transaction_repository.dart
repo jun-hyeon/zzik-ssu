@@ -1,3 +1,4 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:isar/isar.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:zzik_ssu/features/transaction/data/model/transaction_model.dart';
@@ -5,7 +6,7 @@ import 'package:zzik_ssu/features/transaction/data/model/transaction_model.dart'
 part 'transaction_repository.g.dart';
 
 @riverpod
-TransactionRepository transactionRepository(TransactionRepositoryRef ref) {
+TransactionRepository transactionRepository(Ref ref) {
   throw UnimplementedError('Initialize this provider in main.dart');
 }
 

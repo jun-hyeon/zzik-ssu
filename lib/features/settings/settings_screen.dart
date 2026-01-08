@@ -87,37 +87,31 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       builder: (context) {
         return AlertDialog(
           title: const Text('테마 선택'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              RadioListTile<ThemeMode>(
-                title: const Text('시스템 설정 따름'),
-                value: ThemeMode.system,
-                groupValue: ref.read(themeModeProvider),
-                onChanged: (value) {
-                  ref.read(themeModeProvider.notifier).state = value!;
-                  Navigator.pop(context);
-                },
-              ),
-              RadioListTile<ThemeMode>(
-                title: const Text('라이트 모드'),
-                value: ThemeMode.light,
-                groupValue: ref.read(themeModeProvider),
-                onChanged: (value) {
-                  ref.read(themeModeProvider.notifier).state = value!;
-                  Navigator.pop(context);
-                },
-              ),
-              RadioListTile<ThemeMode>(
-                title: const Text('다크 모드'),
-                value: ThemeMode.dark,
-                groupValue: ref.read(themeModeProvider),
-                onChanged: (value) {
-                  ref.read(themeModeProvider.notifier).state = value!;
-                  Navigator.pop(context);
-                },
-              ),
-            ],
+          content: RadioGroup<ThemeMode>(
+            groupValue: ref.read(themeModeProvider),
+            onChanged: (value) {
+              if (value != null) {
+                ref.read(themeModeProvider.notifier).state = value;
+                Navigator.pop(context);
+              }
+            },
+            child: const Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                RadioListTile<ThemeMode>(
+                  title: Text('시스템 설정 따름'),
+                  value: ThemeMode.system,
+                ),
+                RadioListTile<ThemeMode>(
+                  title: Text('라이트 모드'),
+                  value: ThemeMode.light,
+                ),
+                RadioListTile<ThemeMode>(
+                  title: Text('다크 모드'),
+                  value: ThemeMode.dark,
+                ),
+              ],
+            ),
           ),
         );
       },

@@ -8,12 +8,12 @@
 
 | **홈 화면 (Empty)** | **홈 화면 (Data)** | **통계 화면** |
 |:---:|:---:|:---:|
-| ![홈 화면 없음](assets/screenshots/zzik_ssu_home_screen_none.png) | ![홈 화면 데이터](assets/screenshots/zzik_ssu_home_screen.png) | ![통계 화면](assets/screenshots/zzik_ssu_stats_screen.png) |
+| <img src="assets/screenshots/zzik_ssu_home_screen_none.png" width="280" /> | <img src="assets/screenshots/zzik_ssu_home_screen.png" width="280" /> | <img src="assets/screenshots/zzik_ssu_stats_screen.png" width="280" /> |
 | **처음 시작할 때 깔끔한 빈 화면** | **등록된 소비 내역 리스트 확인** | **월별 소비 패턴 차트 분석** |
 
 | **AI 영수증 분석** | **상세 내역 확인** | **설정 화면** |
 |:---:|:---:|:---:|
-| ![AI 분석](assets/screenshots/zzik_ssu_gemini_service.gif) | ![상세 내역](assets/screenshots/zzik_ssu_home_detail_screen.png) | ![설정](assets/screenshots/zzik-ssu_settings_screen.png) |
+| <img src="assets/screenshots/zzik_ssu_gemini_service.gif" width="280" /> | <img src="assets/screenshots/zzik_ssu_home_detail_screen.png" width="280" /> | <img src="assets/screenshots/zzik-ssu_settings_screen.png" width="280" /> |
 | **Gemini가 영수증을 찰떡같이 인식!** | **인식된 품목별 상세 정보 수정** | **다크 모드 및 데이터 관리** |
 
 ---
