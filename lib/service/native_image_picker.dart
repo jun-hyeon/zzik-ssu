@@ -25,3 +25,5 @@ class NativeImagePicker {
     }
   }
 }
+
+enum AppImageSource { camera, gallery }

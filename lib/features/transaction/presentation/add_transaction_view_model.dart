@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:zzik_ssu/features/scan/data/gemini_service.dart';
@@ -10,6 +9,7 @@ import 'package:zzik_ssu/features/scan/data/model/receipt_result.dart';
 import 'package:zzik_ssu/features/scan/data/scan_repository.dart';
 import 'package:zzik_ssu/features/transaction/data/model/transaction_model.dart';
 import 'package:zzik_ssu/features/transaction/data/transaction_repository.dart';
+import 'package:zzik_ssu/service/native_image_picker.dart';
 
 part 'add_transaction_view_model.freezed.dart';
 part 'add_transaction_view_model.g.dart';
@@ -37,35 +37,10 @@ class AddTransactionViewModel extends _$AddTransactionViewModel {
     return const AddTransactionState();
   }
 
-  Future<void> pickAndParseImage(ImageSource source) async {
+  Future<void> pickAndParseImage(AppImageSource source) async {
     state = state.copyWith(isLoading: true);
     try {
-      // final xFile = await ref.read(scanRepositoryProvider).pickImage(source);
-      // if (xFile != null) {
-      //   state = state.copyWith(imagePath: xFile.path);
-
-      //   final result = await ref
-      //       .read(geminiServiceProvider)
-      //       .analyzeReceipt(File(xFile.path));
-
-      //   if (result != null) {
-      //     DateTime parsedDate;
-      //     try {
-      //       parsedDate = DateTime.parse(result.date);
-      //     } catch (_) {
-      //       parsedDate = DateTime.now();
-      //     }
-
-      //     state = state.copyWith(
-      //       receiptResult: result,
-      //       items: result.items,
-      //       title: result.storeName,
-      //       date: parsedDate,
-      //       amount: result.totalAmount,
-      //     );
-      //   }
-      // }
-      final file = source == ImageSource.camera
+      final file = source == AppImageSource.camera
           ? await ref.read(scanRepositoryProvider).pickImageNativeFromCamera()
           : await ref.read(scanRepositoryProvider).pickImageNative();
       if (file != null) {

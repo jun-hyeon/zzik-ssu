@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:zzik_ssu/service/native_image_picker.dart';
 
 class TransactionImageHeader extends StatelessWidget {
   final String? imagePath;
-  final Function(ImageSource) onImagePick;
+  final Function(AppImageSource) onImagePick;
 
   const TransactionImageHeader({
     super.key,
@@ -113,7 +113,7 @@ class TransactionImageHeader extends StatelessWidget {
               title: const Text('카메라로 촬영'),
               onTap: () {
                 Navigator.pop(context);
-                onImagePick(ImageSource.camera);
+                onImagePick(AppImageSource.camera);
               },
             ),
             ListTile(
@@ -121,7 +121,7 @@ class TransactionImageHeader extends StatelessWidget {
               title: const Text('갤러리에서 선택'),
               onTap: () {
                 Navigator.pop(context);
-                onImagePick(ImageSource.gallery);
+                onImagePick(AppImageSource.gallery);
               },
             ),
           ],

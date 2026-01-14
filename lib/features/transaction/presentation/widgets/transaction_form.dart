@@ -121,7 +121,15 @@ class TransactionForm extends StatelessWidget {
                   fillColor: Colors.grey[50],
                 ),
                 items: categories
-                    .map((c) => DropdownMenuItem(value: c, child: Text(c)))
+                    .map(
+                      (c) => DropdownMenuItem(
+                        value: c,
+                        child: Text(
+                          c,
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    )
                     .toList(),
                 onChanged: (val) {
                   if (val != null) onCategoryChanged(val);

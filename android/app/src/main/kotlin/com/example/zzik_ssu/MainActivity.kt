@@ -59,7 +59,7 @@ class MainActivity : FlutterFragmentActivity(){
                 try {
                     tempFile.createNewFile()
                     cameraUri = FileProvider.getUriForFile(this, "${applicationContext.packageName}.fileprovider", tempFile)
-                    takePicture.launch(cameraUri)
+                    cameraUri?.let { takePicture.launch(it) }
                 } catch (e: Exception) {
                     result.error("CAMERA_INIT_FAILED", "Failed to create temp file", e.message)
                     pendingResult = null
