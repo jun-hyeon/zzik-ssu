@@ -110,8 +110,7 @@ class TransactionForm extends StatelessWidget {
             const SizedBox(width: 16),
             Expanded(
               child: DropdownButtonFormField<String>(
-                value:
-                    category, // Use value instead of initialValue for reactive updates if needed from parent
+                initialValue: category,
                 decoration: InputDecoration(
                   labelText: '카테고리',
                   border: OutlineInputBorder(

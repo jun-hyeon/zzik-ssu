@@ -1,9 +1,13 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:zzik_ssu/service/native_image_picker.dart';
 
 part 'scan_repository.g.dart';
 
@@ -14,6 +18,7 @@ ScanRepository scanRepository(Ref ref) {
 
 class ScanRepository {
   final ImagePicker _picker = ImagePicker();
+  final NativeImagePicker _nativeImagePicker = NativeImagePicker();
 
   Future<XFile?> pickImage(ImageSource source) async {
     final permission = source == ImageSource.camera
@@ -30,6 +35,24 @@ class ScanRepository {
       if (await permission.isPermanentlyDenied) {
         await openAppSettings();
       }
+    }
+    return null;
+  }
+
+  Future<File?> pickImageNative() async {
+    final pickedFile = await _nativeImagePicker.pickImage();
+    if (pickedFile != null) {
+      log("이미지가 선택되엇습니다.$pickedFile");
+      return File(pickedFile);
+    }
+    return null;
+  }
+
+  Future<File?> pickImageNativeFromCamera() async {
+    final pickedFile = await _nativeImagePicker.pickImageFromCamera();
+    if (pickedFile != null) {
+      log("카메라로 촬용되었습니다.$pickedFile");
+      return File(pickedFile);
     }
     return null;
   }

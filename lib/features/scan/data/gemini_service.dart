@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'dart:developer' as dev;
 import 'dart:io';
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
-
 import 'model/receipt_result.dart';
 
 // Provider definition

@@ -40,13 +40,40 @@ class AddTransactionViewModel extends _$AddTransactionViewModel {
   Future<void> pickAndParseImage(ImageSource source) async {
     state = state.copyWith(isLoading: true);
     try {
-      final xFile = await ref.read(scanRepositoryProvider).pickImage(source);
-      if (xFile != null) {
-        state = state.copyWith(imagePath: xFile.path);
+      // final xFile = await ref.read(scanRepositoryProvider).pickImage(source);
+      // if (xFile != null) {
+      //   state = state.copyWith(imagePath: xFile.path);
+
+      //   final result = await ref
+      //       .read(geminiServiceProvider)
+      //       .analyzeReceipt(File(xFile.path));
+
+      //   if (result != null) {
+      //     DateTime parsedDate;
+      //     try {
+      //       parsedDate = DateTime.parse(result.date);
+      //     } catch (_) {
+      //       parsedDate = DateTime.now();
+      //     }
+
+      //     state = state.copyWith(
+      //       receiptResult: result,
+      //       items: result.items,
+      //       title: result.storeName,
+      //       date: parsedDate,
+      //       amount: result.totalAmount,
+      //     );
+      //   }
+      // }
+      final file = source == ImageSource.camera
+          ? await ref.read(scanRepositoryProvider).pickImageNativeFromCamera()
+          : await ref.read(scanRepositoryProvider).pickImageNative();
+      if (file != null) {
+        state = state.copyWith(imagePath: file.path);
 
         final result = await ref
             .read(geminiServiceProvider)
-            .analyzeReceipt(File(xFile.path));
+            .analyzeReceipt(file);
 
         if (result != null) {
           DateTime parsedDate;
